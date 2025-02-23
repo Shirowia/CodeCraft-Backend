@@ -15,8 +15,6 @@ import dj_database_url
 import json
 import os
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-FIREBASE_CONFIG = json.loads(os.getenv('FIREBASE_CONFIG'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,12 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y9p4=3vj(0yhlzd1v+hzl!9*399!*hq3pqho-s1e5fn_mb1829'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-y9p4=3vj(0yhlzd1v+hzl!9*399!*hq3pqho-s1e5fn_mb1829')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
