@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import json
+import os
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+FIREBASE_CONFIG = json.loads(os.getenv('FIREBASE_CONFIG'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=os.environ.get('postgresql://postgres:FncYMrVjTXDwUSfQRojGIALOTEmSiYEK@postgres.railway.internal:5432/railway')
     )
 }
 
