@@ -1,0 +1,10 @@
+{
+    "build": {
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "backend.settings"
+      },
+      "command": "python manage.py migrate && python manage.py collectstatic --noinput"
+    },
+    "start": "gunicorn your_project_name.wsgi"
+  }
+  
